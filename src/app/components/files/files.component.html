@@ -1,0 +1,9 @@
+<section class=" relative h-[calc(100svh-4rem)] w-60  overflow-hidden bg-neutral p-2">
+    @for (item of this.files; track $index) {
+        <div class="flex gap-2 p-2 border-b border-neutral-content">
+            
+            <p class="text-primary">{{item.name+"."+item.type}}</p>
+           
+        </div>
+    }
+</section>
