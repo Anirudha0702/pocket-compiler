@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-
+import { animate, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'app-files',
   standalone: true,
   imports: [],
   templateUrl: './files.component.html',
-  styleUrl: './files.component.css'
+  styleUrl: './files.component.css',
+  animations: [trigger('slider-fade', [
+    transition('void => *', [style({ opacity: 0}), animate('0.3s', style({ opacity: 1}))]),
+    transition('* => void', [style({ opacity: 1 }), animate('0.3s', style({ opacity: 0 }))]),
+  ])]
 })
 export class FilesComponent {
   files=[

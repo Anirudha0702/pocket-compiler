@@ -1,12 +1,19 @@
-<div class="cursor-pointer resize-y bg-red-800"
-
-
+<div
+  class="   absolute bottom-0 w-full px-0 left-0 border-t  border-primary bg-neutral"
+  [style.height]="getHeight()"
 >
-
-    <div class="">
-        <div role="tablist" class="tabs tabs-bordered w-fit">
-            <a role="tab" class="tab text-primary">Input</a>
-            <a role="tab" class="tab text-primary tab-active ">Output</a>
-          </div>
+  <div
+    class="cursor-n-resize  bg-base-300  p-2 w-full h-8 flex justify-between items-center"
+    (touchstart)="startResize($event)"
+    (touchend)="stopResize($event)"
+    (touchmove)="resize($event)"
+    (mousedown)="startResize($event)"
+    (mousemove)="resize($event)"
+    (mouseup)="stopResize($event)"
+  >
+    <div role="tablist" class="tabs tabs-bordered w-fit">
+      <a role="tab" class="tab text-primary">Input</a>
+      <a role="tab" class="tab text-primary tab-active">Output</a>
     </div>
+  </div>
 </div>
