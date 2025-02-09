@@ -1,19 +1,37 @@
 <div
-  class="   absolute bottom-0 w-full px-0 left-0 border-t  border-primary bg-neutral"
+  class="min-h-12 overflow-auto absolute bottom-0 w-full px-0 left-0 border-t border-primary bg-neutral flex flex-col"
   [style.height]="getHeight()"
 >
   <div
-    class="cursor-n-resize  bg-base-300  p-2 w-full h-8 flex justify-between items-center"
+    class="cursor-n-resize bg-base-300 p-2 w-full h-8 flex justify-between items-center"
     (touchstart)="startResize($event)"
-    (touchend)="stopResize($event)"
+    (touchend)="stopResize()"
     (touchmove)="resize($event)"
     (mousedown)="startResize($event)"
     (mousemove)="resize($event)"
-    (mouseup)="stopResize($event)"
+    (mouseup)="stopResize()"
   >
     <div role="tablist" class="tabs tabs-bordered w-fit">
-      <a role="tab" class="tab text-primary">Input</a>
-      <a role="tab" class="tab text-primary tab-active">Output</a>
+      <a
+        role="tab"
+        class="tab text-primary"
+        (click)="changeTab('input')"
+        [ngClass]="{ 'tab-active': currentTab === 'input' }"
+        >Input</a
+      >
+      <a
+        role="tab"
+        class="tab text-primary"
+        (click)="changeTab('output')"
+        [ngClass]="{ 'tab-active': currentTab === 'output' }"
+        >Output</a
+      >
     </div>
   </div>
+  @if (currentTab==='input') {
+  <textarea class=" grow resize-none  p-2      focus:outline-none " id="input" placeholder="Press Enter to separte input" [(ngModel)]="input" (keydown.enter)="sendInput()"></textarea>
+  } @else {
+  <textarea class=" grow resize-none p-2 focus:outline-none " id="output"></textarea>
+
+  }
 </div>
